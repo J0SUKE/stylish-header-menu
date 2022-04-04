@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>cobo</title>
+</head>
+<body>
+    <header>
+        <div class="header">
+            <div class="logo">cobo</div>
+            <div class="header__right">
+                <ul>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">News</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+                <div class="header-btn">
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+    <menu class="header-menu remove">
+        <div class="header-menu__bg"></div>
+        <div class="header-menu__content">
+            <div class="header-menu__content__left">
+                <ul>
+                    <li>
+                        <a href="#">Services</a>
+                    </li>
+                    <li>
+                        <a href="#">About</a>
+                    </li>
+                    <li>
+                        <a href="#">News</a>
+                    </li>
+                    <li>
+                        <a href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="header-menu__content__right">
+
+            </div>
+        </div>
+    </menu>
+
+</body>
+
+<script>
+    let header_btn = document.querySelector(".header-btn");
+    let headerMenu =document.querySelector(".header-menu");
+    
+    header_btn.addEventListener("click",()=>{
+        if(header_btn.classList.contains("active"))
+        {
+            header_btn.classList.add("inactive");    
+            header_btn.classList.remove("active");    
+            
+            headerMenu.classList.add("inactive");    
+            headerMenu.classList.remove("active");    
+            setTimeout(() => {
+                headerMenu.classList.add("remove")    
+            }, 600);
+            
+        } 
+        else{
+            headerMenu.classList.remove("remove")
+            header_btn.classList.remove("inactive");
+            header_btn.classList.add("active");
+            
+            headerMenu.classList.remove("inactive");
+            headerMenu.classList.add("active");
+        }    
+    })
+</script>
+
+</html>
