@@ -43,28 +43,65 @@
                         <a href="#">Contact</a>
                     </li>
                 </ul>
+                <div class="details-left    ">
+                    <span>
+                        Developed by <a href="https://github.com/J0SUKE">J0SUKE</a>
+                    </span>
+                </div>
             </div>
             
             <div class="header-menu__content__right">
+                <div class="header-menu__content__right-img">
+                    <img src="./assets/menuImg.jpg" alt="">
+                </div>
+                <div class="header-menu__content__right-p">
+                    <div><p>we shape innovation,</p></div>
+                    <div><p>Collaboration,</p></div>
+                    <div><p>Execution,</p></div>
+                </div>
+                <div class="details">
+                    <span>Site by <a href="https://twitter.com/niccolomiranda/status/1506280367787069443">Niccolò Miranda</a></span>
 
+                    <span>cobo</span>
+                </div>
             </div>
         </div>
     </menu>
 
+    <main class="main-content">
+        <div class="main-content__left">
+
+        </div>
+        <div class="main-content__right">
+            <span>The injection</span>
+            <p>Injection moulding is our way to shape the future.</p>
+            <p>It's a manufacturing process for producing parts by injecting molten material into a mould.</p>
+        </div>
+    </main>
 </body>
 
 <script>
     let header_btn = document.querySelector(".header-btn");
     let headerMenu =document.querySelector(".header-menu");
+    let headerList = document.querySelector("header");
     
     header_btn.addEventListener("click",()=>{
         if(header_btn.classList.contains("active"))
         {
+            headerList.querySelector("ul").classList.remove("remove");
+            headerList.classList.add("active");
+            setTimeout(() => {
+                headerList.classList.remove("inactive");    
+            }, 300);
+            
+            
             header_btn.classList.add("inactive");    
             header_btn.classList.remove("active");    
             
             headerMenu.classList.add("inactive");    
             headerMenu.classList.remove("active");    
+
+
             setTimeout(() => {
                 headerMenu.classList.add("remove")    
             }, 600);
@@ -77,6 +114,13 @@
             
             headerMenu.classList.remove("inactive");
             headerMenu.classList.add("active");
+
+
+            headerList.classList.remove("active");
+            headerList.classList.add("inactive");
+            setTimeout(() => {
+                headerList.querySelector("ul").classList.add("remove");
+            }, 400);
         }    
     })
 </script>

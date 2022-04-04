@@ -25,6 +25,7 @@ body{
 header
 {
     position: fixed;
+    background: $beige;
     top: 0;
     left: 0;
     width: 100%;
@@ -37,10 +38,9 @@ header
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 97%;
+    width: 96%;
     height: 100%;
-    padding: 0 1%;
-    max-width: 1200px;
+    max-width: 1370px;
     margin: auto;
 
     .logo{
@@ -51,7 +51,7 @@ header
     &__right
     {
         height: 100%;
-        width: 55%;
+        width: 50%;
         min-width: 600px;
         display: flex;
         justify-content: space-between;
@@ -151,12 +151,49 @@ header
             }
 
         }
+
+        @media screen and(max-width:725px)
+        {
+            width: auto;
+            min-width: unset;
+            ul{
+                display: none;
+            }
+            
+        }
     }
 
 }
 
-menu{
-
+header.inactive
+{
+    ul{
+        li{
+            animation: listAnimation .3s forwards;
+            @keyframes listAnimation {
+                from{
+                    opacity: 1;
+                }to{
+                    opacity: 0;
+                }
+            }
+        }
+    }
+}
+header.active
+{
+    ul{
+        li{
+            animation: removelistAnimation .3s forwards;
+            @keyframes removelistAnimation {
+                from{
+                    opacity: 0;
+                }to{
+                    opacity: 1;
+                }
+            }
+        }
+    }
 }
 
 
@@ -175,6 +212,7 @@ menu{
     position: absolute;
     inset: 0;
     width: 96%;
+    max-width: 1370px;
     height: 100%;
     margin: auto;
     padding: 3rem;
@@ -191,18 +229,36 @@ menu{
     display: flex;
     justify-content: space-between;
     width: 96%;
+    max-width: 1370px;
     height: 100%;
     margin: auto;
-    padding: 3rem;
+    padding: 3rem 3rem 1.5rem 3rem;
     
     &__left
     {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
         width: 60%;
+
+        .details-left
+        {
+            color: darkgray;
+            overflow: hidden;
+            span{
+                display: inline-block;
+                transform: translateY(100%);
+            }
+            a{
+                text-decoration: underline;
+            }
+        }
     }
 
     li{
+        width: 100%;
         color: white;
-        font-size: 5rem;
+        font-size: clamp(3rem,6vw,5rem);
         position: relative;
         overflow: hidden;
         a{
@@ -251,6 +307,82 @@ menu{
 
 
     }
+
+    &__right
+    {
+        position: relative;
+        width: 40%;
+        padding: 2rem 0 0 4rem;
+        &-img{
+            width: 55%;
+            min-width: 200px;
+            height: 320px;
+            overflow: hidden;
+        }
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: left;
+            transform-origin: bottom center;
+            transform: translateY(-150%);
+        }   
+        &-p{
+            overflow: hidden;
+            margin-top: 1.5rem;
+            div{
+                overflow: hidden;
+            }
+        }
+        p{
+            color: white;
+            font-size: 1.3rem;
+            transform: translateY(100%);
+        }
+
+        .details
+        {
+            
+            color: white;
+            position: absolute;
+            bottom: 0;
+            left: 4rem;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            overflow: hidden;
+            span{
+                transform: translateY(100%);
+            }
+            span:first-child{
+                color: darkgray;
+                a{
+                    text-decoration: underline;
+                }
+            }
+            span:last-child{
+                font-weight: 600;
+            }
+
+            @media screen and(max-width:895px) {
+                display: none;
+            }
+        }
+
+    }
+
+    @media screen and(max-width:725px)
+    {
+        .header-menu__content__right
+        {
+            display: none;
+        }
+        .header-menu__content__left
+        {
+            width: 100%;
+        }
+    }
+
 }   
 
 $line-animation-duration:0.7s;
@@ -313,6 +445,75 @@ $line-animation-duration:0.7s;
         }
 
     }
+
+    img{
+        animation: animateImage .7s .1s forwards;
+        @keyframes animateImage {
+            from{
+                transform: translateY(-150%);
+            }to{
+                transform: translateY(0%);
+            }
+        }       
+    }
+
+    .header-menu__content__right
+    {
+        div{
+            @keyframes animateParagraph {
+                from{
+                    transform: translateY(100%);
+                }
+                to{
+                    transform: translateY(0%);
+                }
+            }
+            &:nth-of-type(1)
+            {
+                p{animation: animateParagraph .3s .3s forwards;}
+            }
+            &:nth-of-type(2)
+            {
+                p{animation: animateParagraph .3s .4s forwards;}
+            }
+            &:nth-of-type(3)
+            {
+                p{animation: animateParagraph .3s .5s forwards;}
+            }
+        }
+    }
+
+    .header-menu__content__left
+    {
+        .details-left
+        {
+            span{
+                animation: animateDetails .4s .4s forwards;
+                @keyframes animateDetails {
+                    from{
+                        transform: translateY(100%);
+                    }to{
+                        transform: translateY(0);
+                    }
+                }
+            }
+        }
+    }
+
+    .details
+    {
+        span{
+            animation: animateDetails .4s .4s forwards;
+            @keyframes animateDetails {
+                from{
+                    transform: translateY(100%);
+                }to{
+                    transform: translateY(0);
+                }
+            }
+        }
+    }
+    
 }
 
 .header-menu.inactive
@@ -368,6 +569,32 @@ $line-animation-duration:0.7s;
         &:nth-of-type(4) {
             a{animation: removeanimateLinks .3s  forwards ease-out;}
             &::before{animation: removeanimateLine $line-animation-duration forwards;}
+        }
+    }
+
+    img{
+        animation: removeanimateImage .7s forwards;
+        @keyframes removeanimateImage {
+            from{
+                transform: translateY(0%);
+            }to{
+                transform: translateY(-150%);
+            }
+        }       
+    }
+
+    .header-menu__content__right
+    {
+        p{
+            animation: removeanimateParagraph .3s  forwards;
+            @keyframes removeanimateParagraph {
+                from{
+                    transform: translateY(0%);
+                }
+                to{
+                    transform: translateY(100%);
+                }
+            }
         }
     }
 }
