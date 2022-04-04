@@ -17,6 +17,7 @@ a{
 
 $beige:rgb(218, 215, 200);
 $darkblue:rgb(1, 13, 31);
+$red:darkred;
 
 body{
     background: $beige;
@@ -25,6 +26,7 @@ body{
 header
 {
     position: fixed;
+    z-index: 1;
     background: $beige;
     top: 0;
     left: 0;
@@ -52,7 +54,7 @@ header
     {
         height: 100%;
         width: 50%;
-        min-width: 600px;
+        max-width: 550px;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -60,7 +62,7 @@ header
             display: flex;
             justify-content: space-between;
             align-items: center;
-            width: 500px;
+            width: 400px;
             height: 100%;
         }
 
@@ -200,6 +202,7 @@ header.active
 .header-menu
 {
     position: fixed;
+    z-index: 2;
     top: 60px;
     width: 100%;
     height: 90vh;
@@ -602,4 +605,73 @@ $line-animation-duration:0.7s;
 .remove
 {
     display: none;
+}
+
+main{
+    position: absolute;
+    z-index: 0;
+    top: 60px;
+    width: 100%;
+
+}
+
+.main-content
+{
+    width: 90%;
+    margin: 3rem auto;
+    display: flex;
+    justify-content: space-between;
+    &__left
+    {
+        width: 50%;
+    }
+    &__right
+    {
+        width: 60%;
+        span{
+            color: $red;
+            font-size: 1.3rem;
+            font-weight: 400;
+        }
+        p{
+            font-size: 2rem;
+            font-weight: 500;
+            &:first-of-type
+            {
+                margin-top: 1rem;
+            }
+        }
+
+        ul{
+            display: flex;
+            justify-content: space-between;
+            margin-top: 4rem;
+            li{
+                padding-right: 3rem;
+                h2{
+                    font-size: .9rem;
+                    display: flex;
+                    align-items: center;
+                    span{
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        margin-left: .5rem;
+                        font-size: .6rem;
+                        min-height: 20px;
+                        max-height: 20px;
+                        min-width: 20px;
+                        max-width: 20px;
+                        color: white;
+                        background: $darkblue;
+                        border-radius: 50%;
+                    }
+                }
+                p{
+                    font-size: .8rem;
+                }
+            }
+        }
+
+    }
 }
